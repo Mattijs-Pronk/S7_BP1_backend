@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import cors from 'cors';
 //controllers
 import searchController from "./Controllers/loginController.js";
 
@@ -10,6 +11,10 @@ dotenv.config();
 //app aanmaken
 const app = express();
 app.use(express.json());
+app.use(express.json());
+app.use(cors({
+  origin: process.env.FRONTEND || 'http://localhost:5173'
+}));
 
 //debug aanzetten
 mongoose.set('debug', true);
